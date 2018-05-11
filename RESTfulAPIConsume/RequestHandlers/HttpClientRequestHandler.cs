@@ -3,7 +3,7 @@ using System;
 using System.Net.Http;
 namespace RESTfulAPIConsume.RequestHandlers
 {
-    public class HttpClientRequestHandler: BaseRequestHandler, IRequestHandler
+    public class HttpClientRequestHandler: IRequestHandler
     {
         public JToken GetReleases(string url)
         {

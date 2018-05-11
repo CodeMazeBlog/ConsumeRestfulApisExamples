@@ -73,7 +73,6 @@
   <ItemGroup>
     <Compile Include="Constants\RequestConstants.cs" />
     <Compile Include="Model\GitHubRelease.cs" />
-    <Compile Include="RequestHandlers\BaseRequestHandler.cs" />
     <Compile Include="RequestHandlers\HttpClientRequestHandler.cs" />
     <Compile Include="RequestHandlers\HttpWebRequestHandler.cs" />
     <Compile Include="RequestHandlers\IRequestHandler.cs" />

@@ -2,6 +2,7 @@
 using RESTfulAPIConsume.Constants;
 using RESTfulAPIConsume.RequestHandlers;
 using System;
+using System.Net;
 
 namespace RESTfulAPIConsume
 {
@@ -18,6 +19,9 @@ namespace RESTfulAPIConsume
             IRequestHandler httpClientRequestHandler = new HttpClientRequestHandler();
             IRequestHandler restSharpRequestHandler = new RestSharpRequestHandler();
             IRequestHandler serviceStackRequestHandler = new ServiceStackRequestHandler();
+
+            //to support github's depreciation of older cryptographic standards
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             //Currently HttpWebRequest is used to get the RestSharp releases
             //Replace the httpWebRequestHandler variable with one of the above to test out different libraries
