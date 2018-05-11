@@ -14,6 +14,7 @@ namespace RESTfulAPIConsume.RequestHandlers
             request.Method = "GET";
             request.UserAgent = RequestConstants.UserAgent;
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             string content = string.Empty;
 

@@ -22,11 +22,12 @@ namespace RESTfulAPIConsume
             //Currently HttpWebRequest is used to get the RestSharp releases
             //Replace the httpWebRequestHandler variable with one of the above to test out different libraries
             //Results should be the same
-            var releases = GetReleases(serviceStackRequestHandler);
+            var releases = GetReleases(httpWebRequestHandler);
 
             //List out the retreived releases
-            foreach (JObject release in releases.Children())
+            foreach (var jToken in releases.Children())
             {
+                var release = (JObject) jToken;
                 Console.WriteLine("Release: {0}", release.GetValue("name"));
                 Console.WriteLine("Published: {0}", DateTime.Parse(release.GetValue("published_at").ToString()));
                 Console.WriteLine();
