@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using RESTfulAPIConsume.Constants;
+﻿using RESTfulAPIConsume.Constants;
 using RESTfulAPIConsume.Model;
 using ServiceStack;
 using System.Collections.Generic;
@@ -8,14 +7,14 @@ namespace RESTfulAPIConsume.RequestHandlers
 {
     public class ServiceStackRequestHandler: IRequestHandler
     {
-        public JToken GetReleases(string url)
+        public string GetReleases(string url)
         {
             var response = url.GetJsonFromUrl(webReq =>
             {
                 webReq.UserAgent = RequestConstants.UserAgentValue;
             });
 
-            return JArray.Parse(response);
+            return response;
         }
 
         //Alternative way, using ServiceStack's parser

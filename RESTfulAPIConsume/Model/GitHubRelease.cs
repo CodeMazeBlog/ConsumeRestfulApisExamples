@@ -1,12 +1,12 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace RESTfulAPIConsume.Model
 {
     public class GitHubRelease
     {
-        [DeserializeAs(Name = "name")]
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-        [DeserializeAs(Name = "published_at")]
+        [JsonProperty(PropertyName = "published_at")]
         public string PublishedAt { get; set; }
     }
 }

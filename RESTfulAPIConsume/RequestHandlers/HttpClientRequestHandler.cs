@@ -7,15 +7,15 @@ namespace RESTfulAPIConsume.RequestHandlers
 {
     public class HttpClientRequestHandler: IRequestHandler
     {
-        public JToken GetReleases(string url)
+        public string GetReleases(string url)
         {
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Add(RequestConstants.UserAgent, RequestConstants.UserAgentValue);
 
                 var response = httpClient.GetStringAsync(new Uri(url)).Result;
-                
-                return JArray.Parse(response);
+
+                return response;
             }
         }
     }

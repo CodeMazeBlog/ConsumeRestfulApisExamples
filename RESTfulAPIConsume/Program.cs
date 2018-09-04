@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using RESTfulAPIConsume.Constants;
+using RESTfulAPIConsume.Model;
 using RESTfulAPIConsume.RequestHandlers;
 using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace RESTfulAPIConsume
@@ -19,6 +21,7 @@ namespace RESTfulAPIConsume
             IRequestHandler httpClientRequestHandler = new HttpClientRequestHandler();
             IRequestHandler restSharpRequestHandler = new RestSharpRequestHandler();
             IRequestHandler serviceStackRequestHandler = new ServiceStackRequestHandler();
+            IRequestHandler flurlRequestHandler = new FlurlRequestHandler();
 
             //to support github's depreciation of older cryptographic standards
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -26,21 +29,26 @@ namespace RESTfulAPIConsume
             //Currently HttpWebRequest is used to get the RestSharp releases
             //Replace the httpWebRequestHandler variable with one of the above to test out different libraries
             //Results should be the same
-            var releases = GetReleases(httpWebRequestHandler);
+            var response = GetReleases(httpWebRequestHandler);
 
-            //List out the retreived releases
-            foreach (var jToken in releases.Children())
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
-                var release = (JObject) jToken;
-                Console.WriteLine("Release: {0}", release.GetValue("name"));
-                Console.WriteLine("Published: {0}", DateTime.Parse(release.GetValue("published_at").ToString()));
+                DateParseHandling = DateParseHandling.None
+            };
+
+            var githubReleases = JsonConvert.DeserializeObject<List<GitHubRelease>>(response);
+
+            foreach (var release in githubReleases)
+            {
+                Console.WriteLine("Release: {0}", release.Name);
+                Console.WriteLine("Published: {0}", DateTime.Parse(release.PublishedAt));
                 Console.WriteLine();
             }
 
             Console.ReadLine();
         }
 
-        public static JToken GetReleases(IRequestHandler requestHandler)
+        public static string GetReleases(IRequestHandler requestHandler)
         {
             return requestHandler.GetReleases(RequestConstants.Url);
         }

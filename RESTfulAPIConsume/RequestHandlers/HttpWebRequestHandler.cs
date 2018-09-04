@@ -7,7 +7,7 @@ namespace RESTfulAPIConsume.RequestHandlers
 {
     public class HttpWebRequestHandler : IRequestHandler
     {
-        public JToken GetReleases(string url)
+        public string GetReleases(string url)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
 
@@ -29,7 +29,7 @@ namespace RESTfulAPIConsume.RequestHandlers
                 }
             }
 
-            return JArray.Parse(content);
+            return content;
         }
     }
 }
