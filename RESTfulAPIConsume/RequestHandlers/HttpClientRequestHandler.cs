@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
+using RESTfulAPIConsume.Constants;
+
 namespace RESTfulAPIConsume.RequestHandlers
 {
     public class HttpClientRequestHandler: IRequestHandler
@@ -9,7 +11,7 @@ namespace RESTfulAPIConsume.RequestHandlers
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
+                httpClient.DefaultRequestHeaders.Add(RequestConstants.UserAgent, RequestConstants.UserAgentValue);
 
                 var response = httpClient.GetStringAsync(new Uri(url)).Result;
                 

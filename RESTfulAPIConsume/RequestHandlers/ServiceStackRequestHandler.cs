@@ -12,7 +12,7 @@ namespace RESTfulAPIConsume.RequestHandlers
         {
             var response = url.GetJsonFromUrl(webReq =>
             {
-                webReq.UserAgent = RequestConstants.UserAgent;
+                webReq.UserAgent = RequestConstants.UserAgentValue;
             });
 
             return JArray.Parse(response);
@@ -23,7 +23,7 @@ namespace RESTfulAPIConsume.RequestHandlers
         {
             var releases = url.GetJsonFromUrl(webReq =>
             {
-                webReq.UserAgent = RequestConstants.UserAgent;
+                webReq.UserAgent = RequestConstants.UserAgentValue;
             }).FromJson<List<GitHubRelease>>();
 
             return releases;

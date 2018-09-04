@@ -9,7 +9,7 @@ namespace RESTfulAPIConsume.RequestHandlers
         public JToken GetReleases(string url)
         {
             var client = new WebClient();
-            client.Headers.Add("user-agent", RequestConstants.UserAgent);
+            client.Headers.Add(RequestConstants.UserAgent, RequestConstants.UserAgentValue);
 
             var response = client.DownloadString(url);
 
