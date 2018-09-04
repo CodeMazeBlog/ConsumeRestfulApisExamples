@@ -12,7 +12,7 @@ namespace RESTfulAPIConsume.RequestHandlers
             var request = (HttpWebRequest)WebRequest.Create(url);
 
             request.Method = "GET";
-            request.UserAgent = RequestConstants.UserAgent;
+            request.UserAgent = RequestConstants.UserAgentValue;
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
