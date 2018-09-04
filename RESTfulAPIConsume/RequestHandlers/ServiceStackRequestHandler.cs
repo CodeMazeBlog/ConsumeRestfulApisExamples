@@ -10,7 +10,7 @@ namespace RESTfulAPIConsume.RequestHandlers
     {
         public JToken GetReleases(string url)
         {
-            var response = url.GetJsonFromUrl(requestFilter: webReq =>
+            var response = url.GetJsonFromUrl(webReq =>
             {
                 webReq.UserAgent = RequestConstants.UserAgent;
             });
@@ -21,7 +21,7 @@ namespace RESTfulAPIConsume.RequestHandlers
         //Alternative way, using ServiceStack's parser
         public List<GitHubRelease> GetDeserializedReleases(string url)
         {
-            List<GitHubRelease> releases = url.GetJsonFromUrl(requestFilter: webReq =>
+            var releases = url.GetJsonFromUrl(webReq =>
             {
                 webReq.UserAgent = RequestConstants.UserAgent;
             }).FromJson<List<GitHubRelease>>();

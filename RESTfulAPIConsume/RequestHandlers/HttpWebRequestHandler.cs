@@ -9,14 +9,14 @@ namespace RESTfulAPIConsume.RequestHandlers
     {
         public JToken GetReleases(string url)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            var request = (HttpWebRequest)WebRequest.Create(url);
 
             request.Method = "GET";
             request.UserAgent = RequestConstants.UserAgent;
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            string content = string.Empty;
+            var content = string.Empty;
 
             using (var response = (HttpWebResponse)request.GetResponse())
             {
