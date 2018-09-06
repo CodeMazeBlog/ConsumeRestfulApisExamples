@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using RESTfulAPIConsume.Constants;
+﻿using RESTfulAPIConsume.Constants;
 using System.IO;
 using System.Net;
 
@@ -14,7 +13,6 @@ namespace RESTfulAPIConsume.RequestHandlers
             request.Method = "GET";
             request.UserAgent = RequestConstants.UserAgentValue;
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             var content = string.Empty;
 

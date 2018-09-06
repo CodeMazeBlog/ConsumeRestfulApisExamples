@@ -15,7 +15,7 @@ namespace RESTfulAPIConsume
             Console.WriteLine("Fetching the list of RestSharp releases and their publish dates.");
             Console.WriteLine();
 
-            //These are the five ways to consume RESTful APIs described in the blog post
+            //These are the six ways to consume RESTful APIs described in the blog post
             IRequestHandler httpWebRequestHandler = new HttpWebRequestHandler();
             IRequestHandler webClientRequestHandler = new WebClientRequestHandler();
             IRequestHandler httpClientRequestHandler = new HttpClientRequestHandler();
