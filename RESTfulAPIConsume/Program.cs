@@ -31,11 +31,6 @@ namespace RESTfulAPIConsume
             //Results should be the same
             var response = GetReleases(httpWebRequestHandler);
 
-            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-            {
-                DateParseHandling = DateParseHandling.None
-            };
-
             var githubReleases = JsonConvert.DeserializeObject<List<GitHubRelease>>(response);
 
             foreach (var release in githubReleases)
