@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using RESTfulAPIConsume.Constants;
 using System;
 using System.Net.Http;
-using RESTfulAPIConsume.Constants;
 
 namespace RESTfulAPIConsume.RequestHandlers
 {
