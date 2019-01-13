@@ -11,7 +11,7 @@ namespace RESTfulAPIConsume.RequestHandlers
         public string GetReleases(string url)
         {
             dynamic client = new RestClient(RequestConstants.BaseUrl, 
-                new Dictionary<string, string> { { RequestConstants.UserAgent, RequestConstants.UserAgentValue } });
+                new Headers { { RequestConstants.UserAgent, RequestConstants.UserAgentValue } });
             
             var response = client.repos.restsharp.restsharp.releases.Get().Result.ToString();
 
@@ -22,7 +22,7 @@ namespace RESTfulAPIConsume.RequestHandlers
         public async Task<List<GitHubRelease>> GetDeserializedReleases(string url)
         {
             dynamic client = new RestClient(RequestConstants.BaseUrl, 
-                new Dictionary<string, string> { { RequestConstants.UserAgent, RequestConstants.UserAgentValue } });
+                new Headers { { RequestConstants.UserAgent, RequestConstants.UserAgentValue } });
 
             var response = await client.repos.restsharp.restsharp.releases.Get();
 
